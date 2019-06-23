@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.event.*;
 public class swing{
 	public static void main(String[] args){
 		JFrame jf = new JFrame("Swing Example");
@@ -18,13 +19,26 @@ public class swing{
 		JButton j = new JButton("Login");
 		j.setBounds(100,130,70,20);
 
+		JLabel label = new JLabel();
+		label.setBounds(100,160,400,40);
+
 		jf.add(jb);
 		jf.add(jb2);
 		jf.add(jt);
 		jf.add(jp);
 		jf.add(j);
+		jf.add(label);
 		jf.setSize(500,500);
 		jf.setLayout(null);
 		jf.setVisible(true);
+
+		j.addActionListener(new ActionListener(){  
+                public void actionPerformed(ActionEvent e) {       
+                   String data = "Username " + jt.getText();  
+                   data += ", Password: "   
+                   + new String(jp.getPassword());   
+                   label.setText(data);          
+                }  
+             });
 	}
 }
